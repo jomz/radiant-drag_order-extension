@@ -1,4 +1,18 @@
-# I think this is the one that should be moved to the extension Rakefile template
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "radiant-drag_order-extension"
+    gem.summary = %Q{Drag Order Extension for Radiant CMS}
+    gem.description = %Q{Radiant DragOrder allows you to reorder pages funly}
+    gem.email = "dk@dirkkelly.com"
+    gem.homepage = "http://github.com/dirkkelly/radiant-drag_order-extension"
+    gem.authors = ["Dirk Kelly"]
+    gem.add_dependency 'radiant', '>= 0.9.1'
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. This is only required if you plan to package drag_order as a gem."
+end
 
 # In rails 1.2, plugins aren't available in the path until they're loaded.
 # Check to see if the rspec plugin is installed first and require
@@ -24,7 +38,8 @@ require 'rake/testtask'
 rspec_base = File.expand_path(RADIANT_ROOT + '/vendor/plugins/rspec/lib')
 $LOAD_PATH.unshift(rspec_base) if File.exist?(rspec_base)
 require 'spec/rake/spectask'
-# require 'spec/translator'
+require 'cucumber'
+require 'cucumber/rake/task'
 
 # Cleanup the RADIANT_ROOT constant so specs will load the environment
 Object.send(:remove_const, :RADIANT_ROOT)
@@ -40,11 +55,13 @@ Spec::Rake::SpecTask.new(:spec) do |t|
   t.spec_files = FileList['spec/**/*_spec.rb']
 end
 
+task :features => 'spec:integration'
+
 namespace :spec do
   desc "Run all specs in spec directory with RCov"
   Spec::Rake::SpecTask.new(:rcov) do |t|
     t.spec_opts = ['--options', "\"#{extension_root}/spec/spec.opts\""]
-    t.spec_files = FileList['spec/**/*_spec.rb']
+    t.spec_files = FileList["#{extension_root}/spec/**/*_spec.rb"]
     t.rcov = true
     t.rcov_opts = ['--exclude', 'spec', '--rails']
   end
@@ -63,13 +80,13 @@ namespace :spec do
     end
   end
   
-  # Hopefully no one has written their extensions in pre-0.9 style
-  # desc "Translate specs from pre-0.9 to 0.9 style"
-  # task :translate do
-  #   translator = ::Spec::Translator.new
-  #   dir = RAILS_ROOT + '/spec'
-  #   translator.translate(dir, dir)
-  # end
+  desc "Run the Cucumber features"
+  Cucumber::Rake::Task.new(:integration) do |t|
+    t.fork = true
+    t.cucumber_opts = ['--format', (ENV['CUCUMBER_FORMAT'] || 'pretty')]
+    # t.feature_pattern = "#{extension_root}/features/**/*.feature"
+    t.profile = "default"
+  end
 
   # Setup specs for stats
   task :statsetup do

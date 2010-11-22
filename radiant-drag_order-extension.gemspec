@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{radiant-drag_order-extension}
-  s.version = "0.3.8"
+  s.version = "0.3.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dirk Kelly"]
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "lib/drag_order/controllers/admin/pages_controller.rb",
     "lib/drag_order/models/page.rb",
     "lib/drag_order/tags/core.rb",
+    "lib/radiant-drag_order-extension.rb",
     "lib/tasks/drag_order_extension_tasks.rake",
     "public/images/admin/extensions/drag_order/circle.png",
     "public/images/admin/extensions/drag_order/copy.png",

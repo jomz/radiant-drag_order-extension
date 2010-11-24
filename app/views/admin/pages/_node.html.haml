@@ -20,6 +20,6 @@
       - unless simple
         %span.remove= link_to t('remove'), remove_admin_page_url(page)
 
-  %ol.kids{:id => "#{@homepage ? 'pages' : "page_#{page.id}_pages"}"}
+  %ol.kids{:id => "#{level == 0 ? 'pages' : "page_#{page.id}_pages"}"}
     - page.children.each do |child|
       = render_node child, :level => level + 1, :simple => simple

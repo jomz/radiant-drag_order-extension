@@ -17,7 +17,16 @@ var DragOrderIndex = Class.create({
       only:       'page',
       handle:     'handle',
       tree:       true,
-      treeTag:    '.kids'
+      dropOnEmpty:true,
+      treeTag:    '.kids',
+      hoverclass: 'hover',
+      onChange: function(element) {
+        this.mover = element;
+        this.mover.addClassName('move');
+      }.bind(this),
+      onUpdate: function() {
+        this.mover.removeClassName('move');
+      }.bind(this)
     })
   }
   

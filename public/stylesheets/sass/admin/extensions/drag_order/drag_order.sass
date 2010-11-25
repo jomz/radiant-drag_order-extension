@@ -1,7 +1,15 @@
 #content 
   
-  .page
   
+  .page
+    padding-right: 0 !important
+  
+    &.drop_hover
+      background-color: #F9F9F9
+  
+    &.drop_insert
+      background-color: #DFEBFF
+        
     .add_child, .remove
       position: absolute
     
@@ -24,8 +32,7 @@
       .kids
         display: none
         
-  .kids
-    min-height: 5px
+  .children
     margin-left: 15px
 
 .handle

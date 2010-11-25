@@ -10,25 +10,11 @@ var DragOrderIndex = Class.create({
   },
   
   sortPages: function() {
-    var route = '/some/url';
-    
-    Sortable.create('pages', {
-      overlap:    'vertical',
-      only:       'page',
-      handle:     'handle',
-      tree:       true,
-      dropOnEmpty:true,
-      treeTag:    '.kids',
-      hoverclass: 'hover',
-      onChange: function(element) {
-        this.mover = element;
-        this.mover.addClassName('move');
-      }.bind(this),
-      onUpdate: function() {
-        this.mover.removeClassName('move');
-      }.bind(this)
-    })
+    var tree = new SortableTree('pages', {
+      draggable: {
+        handle: 'handle'
+      }
+    });
+    tree.setSortable();
   }
-  
-  
 })

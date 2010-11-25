@@ -1,4 +1,4 @@
-%li.node.page{:class =>"#{level}#{children_class}#{virtual_class}", :id => "page_#{page.id}"}
+%li.node.page{:class =>"#{level}#{children_class}#{virtual_class}", :id => "page_#{page.id}", :'data-page_id' => page.id}
   - render_region :node, :locals => {:page => page, :level => level, :simple => simple} do |node|
     - node.title_column do
       %span.title{:style => "padding-left: 15px"}

@@ -43,14 +43,8 @@ var SiteMapBehavior = Behavior.create({
     return element && element.tagName && element.match('li');
   },
   
-  extractLevel: function(row) {
-    if (/level_(\d+)/i.test(row.className))
-      return RegExp.$1.toInteger();
-  },
-  
   extractPageId: function(row) {
-    if (/page_(\d+)/i.test(row.id))
-      return RegExp.$1.toInteger();
+    return row.readAttribute('data-page_id').toInteger();
   },
   
   getExpanderImageForRow: function(row) {
@@ -58,7 +52,7 @@ var SiteMapBehavior = Behavior.create({
   },
   
   readExpandedCookie: function() {
-    var matches = document.cookie.match(/expanded_rows=(.+?);/);
+    var matches = document.cookie.match(/expanded_rows=(.+?)(;|$)/);
     this.expandedRows = matches ? decodeURIComponent(matches[1]).split(',') : [];
   },
 
@@ -73,7 +67,8 @@ var SiteMapBehavior = Behavior.create({
   },
 
   persistExpanded: function(row) {
-    this.expandedRows.push(this.extractPageId(row));
+    var pageId = this.extractPageId(row);
+    this.expandedRows.push(pageId);
     this.saveExpandedCookie();
   },
 

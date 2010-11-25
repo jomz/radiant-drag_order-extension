@@ -14,6 +14,7 @@ var DragOrderIndex = Class.create({
       draggable: {
         handle: 'handle',
         ghosting: false,
+        constraint:  false,
         onDrag: function(drag, event) {
           drag.element.addClassName('drag_move');          
         },

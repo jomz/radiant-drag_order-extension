@@ -9,6 +9,10 @@
   
     &.drop_insert
       background-color: #DFEBFF
+      
+    &.drag_move
+      .children
+        opacity: 0.25
         
     .add_child, .remove
       position: absolute
@@ -27,10 +31,6 @@
       .kids
         li
           display: none
-          
-    &.move
-      .kids
-        display: none
         
   .children
     margin-left: 15px

@@ -12,7 +12,14 @@ var DragOrderIndex = Class.create({
   sortPages: function() {
     var tree = new SortableTree('pages', {
       draggable: {
-        handle: 'handle'
+        handle: 'handle',
+        ghosting: false,
+        onDrag: function(drag, event) {
+          drag.element.addClassName('drag_move');          
+        },
+        onEnd: function(drag, event) {
+          drag.element.removeClassName('drag_move');
+        }
       }
     });
     tree.setSortable();

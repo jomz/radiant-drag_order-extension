@@ -8,9 +8,7 @@ class DragOrderExtension < Radiant::Extension
     StandardTags.send :include, DragOrder::Tags::Core
     Admin::PagesController.send :include, DragOrder::Controllers::Admin::PagesController
     
-    admin.pages.index.add :sitemap_head, "drag_order_header", :before => "title_column_header"
-    admin.pages.index.add :node,         "drag_order",        :before => "title_column"
-    admin.pages.index.add :top,          "top"
+    admin.pages.index.add :node,  "handle", :before => "title_column"
   end
   
 end

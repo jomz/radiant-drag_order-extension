@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{radiant-drag_order-extension}
-  s.version = "0.3.9"
+  s.version = "0.3.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dirk Kelly"]
-  s.date = %q{2010-11-24}
+  s.date = %q{2010-11-25}
   s.description = %q{Radiant DragOrder allows you to reorder pages funly}
   s.email = %q{dk@dirkkelly.com}
   s.extra_rdoc_files = [
@@ -19,9 +19,9 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "app/views/admin/pages/_drag_order.html.haml",
-    "app/views/admin/pages/_drag_order_header.html.haml",
-    "app/views/admin/pages/_top.html.haml",
+    "app/views/admin/pages/_handle.html.haml",
+    "app/views/admin/pages/_node.html.haml",
+    "app/views/admin/pages/index.html.haml",
     "config/routes.rb",
     "db/migrate/01_add_position_to_pages.rb",
     "db/migrate/02_add_default_position.rb",
@@ -35,6 +35,8 @@ Gem::Specification.new do |s|
     "public/images/admin/extensions/drag_order/copy.png",
     "public/images/admin/extensions/drag_order/handle.png",
     "public/javascripts/admin/extensions/drag_order/drag_order.js",
+    "public/javascripts/admin/sitemap.js",
+    "public/javascripts/admin/sortable_tree.js",
     "public/stylesheets/sass/admin/extensions/drag_order/drag_order.sass",
     "radiant-drag_order-extension.gemspec",
     "spec/spec.opts",

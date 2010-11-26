@@ -23,6 +23,20 @@ var DragOrderIndex = Class.create({
         }
       },
       onDrop: function(drag, drop, event){
+        var level = parseInt(drag.element.up('.page').getAttribute('data-level'))
+        level += 1;
+        drag.element.setAttribute('data-level', level)
+        drag.element.down('.handle').setStyle({ left: (level * -25) + 'px' })
+        
+        drag.element.select('.children').each(function(container) {
+          level += 1
+          container.select('.page').each(function(page) {
+            page.setAttribute('data-level', level)
+            page.down('.handle').setStyle({ left: (level * -25) + 'px' })
+          });
+        })
+
+        
         var parent = drag.element.up('.page')
         var elements = '';
         parent.down('.children').immediateDescendants().each(function(page) {
@@ -37,6 +51,7 @@ var DragOrderIndex = Class.create({
             'children' : elements
           }
         })
+        
       }
     });
     tree.setSortable();

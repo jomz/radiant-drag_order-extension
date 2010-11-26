@@ -1,4 +1,4 @@
-%li.node.page{:class =>"#{level}#{children_class}#{virtual_class}", :id => "page_#{page.id}", :'data-page_id' => page.id}
+%li.node.page{:class =>"level_#{level}#{children_class}#{virtual_class}", :id => "page_#{page.id}", :'data-page_id' => page.id, :'data-level' => level}
   .attributes
     - render_region :node, :locals => {:page => page, :level => level, :simple => simple} do |node|
       - node.title_column do

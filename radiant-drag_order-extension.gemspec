@@ -40,6 +40,8 @@ Gem::Specification.new do |s|
     "public/javascripts/admin/sortable_tree.js",
     "public/stylesheets/sass/admin/extensions/drag_order/drag_order.sass",
     "radiant-drag_order-extension.gemspec",
+    "spec/controllers/pages_controller_spec.rb",
+    "spec/datasets/sort_pages.rb",
     "spec/spec.opts",
     "spec/spec_helper.rb"
   ]
@@ -48,6 +50,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Drag Order Extension for Radiant CMS}
   s.test_files = [
+    "spec/controllers/pages_controller_spec.rb",
+    "spec/datasets/sort_pages.rb",
     "spec/spec_helper.rb"
   ]
 

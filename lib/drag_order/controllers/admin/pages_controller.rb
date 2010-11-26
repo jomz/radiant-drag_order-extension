@@ -11,9 +11,9 @@ module DragOrder
             def sort
               begin
                 parent = Page.find(params[:parent_id])
-                params[:children].split(',').each_with_index do |child,i|
+                params[:children].split(',').each_with_index do |child,index|
                   Page.find(child).update_attributes!(
-                    :position  => i+1,
+                    :position  => index,
                     :parent_id => params[:parent_id]
                   )
                 end

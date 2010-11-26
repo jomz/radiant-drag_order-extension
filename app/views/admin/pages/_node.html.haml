@@ -1,24 +1,25 @@
 %li.node.page{:class =>"#{level}#{children_class}#{virtual_class}", :id => "page_#{page.id}", :'data-page_id' => page.id}
-  - render_region :node, :locals => {:page => page, :level => level, :simple => simple} do |node|
-    - node.title_column do
-      %span.title{:style => "padding-left: 15px"}
-        %span.w1
-          - if simple
-            = icon
-            = node_title
-          - else
-            = expander(level) + link_to("#{icon} #{node_title}", edit_admin_page_url(page), :title => page.url)
-            = page_type
-            = spinner
-    - node.status_column do
-      - unless simple
-        %span.status{:class => "#{page.status.name.downcase}_status", :title => "#{timestamp(page.published_at) if page.published_at}"}= t(page.status.name.downcase)
-    - node.add_child_column do
-      - unless simple
-        %span.add_child= link_to t('add_child'), new_admin_page_child_url(page)
-    - node.remove_column do
-      - unless simple
-        %span.remove= link_to t('remove'), remove_admin_page_url(page)
+  .attributes
+    - render_region :node, :locals => {:page => page, :level => level, :simple => simple} do |node|
+      - node.title_column do
+        %span.attribute.title
+          %span.w1
+            - if simple
+              = icon
+              = node_title
+            - else
+              = expander(level) + link_to("#{icon} #{node_title}", edit_admin_page_url(page), :title => page.url)
+              = page_type
+              = spinner
+      - node.status_column do
+        - unless simple
+          %span.attribute.status{:class => "#{page.status.name.downcase}_status", :title => "#{timestamp(page.published_at) if page.published_at}"}= t(page.status.name.downcase)
+      - node.add_child_column do
+        - unless simple
+          %span.attribute.add_child= link_to t('add_child'), new_admin_page_child_url(page)
+      - node.remove_column do
+        - unless simple
+          %span.attribute.remove= link_to t('remove'), remove_admin_page_url(page)
 
   %ol.children{:id => "#{level == 0 ? 'pages' : "page_#{page.id}_pages"}"}
     - page.children.each do |child|

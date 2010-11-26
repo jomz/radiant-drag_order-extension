@@ -23,37 +23,41 @@ var DragOrderIndex = Class.create({
         }
       },
       onDrop: function(drag, drop, event){
-        var level = parseInt(drag.element.up('.page').getAttribute('data-level'))
-        level += 1;
-        drag.element.setAttribute('data-level', level)
-        drag.element.down('.handle').setStyle({ left: (level * -25) + 'px' })
-        
-        drag.element.select('.children').each(function(container) {
-          level += 1
-          container.select('.page').each(function(page) {
-            page.setAttribute('data-level', level)
-            page.down('.handle').setStyle({ left: (level * -25) + 'px' })
-          });
-        })
-
-        
         var parent = drag.element.up('.page')
-        var elements = '';
+        var children  = '';
+                
+        this.moveHandles(drag.element);
+        
         parent.down('.children').immediateDescendants().each(function(page) {
-          elements += page.readAttribute('data-page_id') + ','
+          children += page.readAttribute('data-page_id') + ','
         });
-        elements = elements.slice(0,-1);
+        children = children.slice(0,-1);
         
         new Ajax.Request('/admin/pages/sort.js', {
           method: 'put',
           parameters: {
             'parent_id': parent.readAttribute('data-page_id'),
-            'children' : elements
+            'children' : children
           }
         })
         
-      }
+      }.bind(this)
     });
     tree.setSortable();
+  },
+  
+  moveHandles: function(page) {
+    var level = parseInt(page.up('.page').getAttribute('data-level'))
+    level += 1;
+    page.setAttribute('data-level', level)
+    page.down('.handle').setStyle({ left: (level * -25) + 'px' })
+    
+    page.select('.children').each(function(container) {
+      level += 1
+      container.select('.page').each(function(child) {
+        child.setAttribute('data-level', level)
+        child.down('.handle').setStyle({ left: (level * -25) + 'px' })
+      });
+    });
   }
 })

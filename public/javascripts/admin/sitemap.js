@@ -75,24 +75,24 @@ var SiteMapBehavior = Behavior.create({
   toggleExpanded: function(row, img) {
     if (!img) img = this.getExpanderImageForRow(row);
     if (this.isExpanded(row)) {
-      img.src = img.src.replace('collapse', 'expand');
-      row.removeClassName('children_visible');
-      row.addClassName('children_hidden');
-      this.persistCollapsed(row);
+      this.hideBranch(rom,image);
     } else {
-      img.src = img.src.replace('expand', 'collapse');
-      row.removeClassName('children_hidden');
-      row.addClassName('children_visible');
-      this.persistExpanded(row);
+      this.showBranch(rom,image);
     }
   },
   
-  hideBranch: function(parent, img) {
-    this.toggleExpanded(parent, img);
+  hideBranch: function(row, img) {
+    img.src = img.src.replace('collapse', 'expand');
+    row.removeClassName('children_visible');
+    row.addClassName('children_hidden');
+    this.persistCollapsed(row);
   },
   
-  showBranch: function(parent, img) {
-    this.toggleExpanded(parent, img);
+  showBranch: function(row, img) {
+    img.src = img.src.replace('expand', 'collapse');
+    row.removeClassName('children_hidden');
+    row.addClassName('children_visible');
+    this.persistExpanded(row);
   },
   
   toggleBranch: function(row, img) {
@@ -105,7 +105,3 @@ var SiteMapBehavior = Behavior.create({
     }
   }
 });
-
-Event.addBehavior({
-  '#site_map': SiteMapBehavior()
-})

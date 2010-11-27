@@ -6,7 +6,7 @@ module DragOrder
         def self.included(base)
           base.class_eval do
             
-            helper_method :order_dragger
+            before_filter :drag_assets, :only => [:index, :remove]
             
             def sort
               begin
@@ -30,8 +30,11 @@ module DragOrder
             
             private
             
-            def order_dragger
-              %{<img src="/images/admin/extensions/drag_order/handle.png" alt ="Drag this icon to move the page" />}
+            def drag_assets
+              @javascripts << 'admin/dragdrop.js'
+              @javascripts << 'admin/sortable_tree.js'
+              @javascripts << 'admin/extensions/drag_order/drag_order.js'
+              @stylesheets << 'admin/extensions/drag_order/drag_order.css'
             end
             
           end

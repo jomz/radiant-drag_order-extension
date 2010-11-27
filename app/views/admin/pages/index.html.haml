@@ -1,13 +1,8 @@
-- @javascripts << 'admin/dragdrop.js'
-- @javascripts << 'admin/sortable_tree.js'
-- @javascripts << 'admin/extensions/drag_order/drag_order.js'
-- @stylesheets << 'admin/extensions/drag_order/drag_order.css'
-
 - @page_title = t('pages') + ' - ' + default_page_title
 
 .outset
   = render_region :top
-  %ol#site_map.index{:summary=>"Page hierarchy of the current site"}
+  %ol#pages.index{:summary=>"Page hierarchy of the current site"}
     - if @homepage
       = render_node @homepage
     - else

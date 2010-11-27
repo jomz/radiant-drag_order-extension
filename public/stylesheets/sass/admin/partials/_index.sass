@@ -1,0 +1,172 @@
+=status-badge($background: transparent, $color: black, $width: 5em)
+  float: left
+  height: 14px
+  line-height: 14px
+  font-size: 10px
+  color: $color
+  background: $background
+  display: block
+  padding: 0 6px
+  position: absolute
+  right: 215px
+  top: 14px
+  width: $width
+  text-align: center
+  +border-radius(100px)
+
+#main
+  // Support floated elements, avoid horizontal scrollbar
+  overflow: hidden
+
+.index
+  font-size: 90%
+  margin-bottom: 2emasset
+  width: 100%
+  border-bottom: 1px solid white
+  li
+    position: relative
+    text-align: left
+    &:first-child
+      border-top: 1px solid white
+    .attributes
+      width: auto
+      height: 31px
+      line-height: 31px
+      padding: 4px 0 4px 10px
+      overflow: hidden
+      text-decoration: none
+      padding-left: 5px
+      border-top: 1px solid #fafafa
+      border-bottom: 1px solid transparent
+      &:hover
+        border-top: 1px solid #d5f0ff
+        border-bottom: 1px solid #c5dff5
+        background: #c5dff5 image_url('admin/row_highlight.png') repeat-x center top
+        +linear-gradient(color_stops(#e5f5ff, #c5dff5))
+      .attribute
+        display: block
+        float: left
+        padding-right: 5px
+      .actions
+        float: right
+        margin-top: -2px
+        a.action, span.action.disabled
+          padding: 6px
+          margin: 0 25px 0 1px
+          font-size: 10px
+          img
+            vertical-align: -10%
+        a.action
+          color: black
+          text-decoration: none
+          &:hover
+            background: #eee image_url('admin/buttons_background.png') repeat-x
+            border: 1px solid #a5c9df
+            margin: 0 24px 0 0
+            +border-radius
+          &.selected
+            background: #c5e0f5
+            +linear-gradient(color_stops(#e5f5ff, #c5e0ff))
+            border: 1px solid #a5c9df
+            margin: 0 24px 0 0
+            +border-top-radius
+            +border-bottom-radius(0)
+        span.action.disabled
+          color: #ccc
+    &.empty
+      color: silver
+      font-size: 85%
+      font-style: italic
+      padding: 3em
+      text-align: center
+    &.name
+      font-size: 115%
+      font-weight: bold
+      img
+        vertical-align: center
+      a
+        color: black
+        text-decoration: none
+        &:hover
+          color: #0066cc
+          text-decoration: underline
+    &.actions
+      float: right
+      font-size: 85%
+      white-space: nowrap
+
+.index#pages
+  .page
+    &.level_0 .attribute.name
+      font-size: 120%
+      font-weight: bold
+    &.level_1 .attribute.name
+      font-size: 115%
+      font-weight: bold
+    &.level_2 .attribute.name
+      font-size: 115%
+    &.level_3 .attribute.name
+      font-size: 105%
+    &.virtual .attribute.name a .title
+      color: #9eb3bf
+    &.children_visible
+      .children
+        display: block
+    &.children_hidden
+      .children
+        display: none
+    .attributes
+      .attribute.name
+        font-size: 105%
+        a
+          text-decoration: none
+          .title
+            color: black
+            text-decoration: none
+          &:hover .title
+            color: #0066cc
+            text-decoration: underline
+        .info
+          color: #9eb3bf
+          font-style: italic
+          font-weight: normal
+          font-size: 90%
+      .attribute.name
+        position: relative
+        img.expander
+          position: absolute
+          left: -25px
+          top: 8px
+          padding: 0 3px
+          &.hidden
+            visibility: hidden
+      .attribute.status
+        font-size: 80%
+    
+.status
+  +status-badge
+  a
+    +plain-link
+.draft_status
+  +status-badge(#cc494c, white)
+.hidden_status
+  +status-badge(#9eb3bf, white)
+
+.index#users
+  .name
+    padding-top: 8px
+    padding-bottom: 8px
+    img.avatar
+      margin-right: 4px
+      vertical-align: center
+    .login
+      color: #9eb3bf
+      font-size: 90%
+      font-style: italic
+      font-weight: normal
+      
+.inset
+  li
+    list-style: none
+  .actions
+    display: none

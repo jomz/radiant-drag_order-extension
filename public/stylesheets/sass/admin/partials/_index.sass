@@ -1,5 +1,6 @@
 =status-badge($background: transparent, $color: black, $width: 5em)
-  float: left
+  position: absolute
+  right: 235px
   height: 14px
   line-height: 14px
   font-size: 10px
@@ -7,8 +8,6 @@
   background: $background
   display: block
   padding: 0 6px
-  position: absolute
-  right: 215px
   top: 14px
   width: $width
   text-align: center
@@ -22,12 +21,9 @@
   font-size: 90%
   margin-bottom: 2emasset
   width: 100%
-  border-bottom: 1px solid white
   li
     position: relative
     text-align: left
-    &:first-child
-      border-top: 1px solid white
     .attributes
       width: auto
       height: 31px
@@ -36,8 +32,8 @@
       overflow: hidden
       text-decoration: none
       padding-left: 5px
-      border-top: 1px solid #fafafa
-      border-bottom: 1px solid transparent
+      border-top: 1px solid transparent
+      border-bottom: 1px solid #F4F4F4
       &:hover
         border-top: 1px solid #d5f0ff
         border-bottom: 1px solid #c5dff5
@@ -49,7 +45,6 @@
         padding-right: 5px
       .actions
         float: right
-        margin-top: -2px
         a.action, span.action.disabled
           padding: 6px
           margin: 0 25px 0 1px

@@ -28,7 +28,7 @@ var DragOrderIndex = Class.create({
         }
       },
       onDrop: function(drag, drop, event){
-        this.moveHandles(drag.element);
+        this.assignIndentation(drag.element);
         this.assignExpanders(drag.element);
         
         new Ajax.Request('/admin/pages/sort.js', {
@@ -74,17 +74,19 @@ var DragOrderIndex = Class.create({
     });
   },
   
-  moveHandles: function(page) {
+  assignIndentation: function(page) {
     var level = parseInt(page.up('.page').getAttribute('data-level'))
     
     level += 1;    
-    page.setAttribute('data-level', level)
+    page.setAttribute('data-level', level);
+    page.addClassName('level_' + level);
     page.down('.attributes').setStyle({ paddingLeft: ((level * 23) + 31) + 'px' });
     
     page.select('.children').each(function(container) {
       level += 1;
       container.select('.page').each(function(page) {
         page.setAttribute('data-level', level);
+        page.addClassName('level_' + level);
         page.down('.attributes').setStyle({ paddingLeft: ((level * 23) + 31) + 'px' });
       });
     });

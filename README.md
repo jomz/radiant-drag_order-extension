@@ -1,4 +1,4 @@
-# DragOrder for Radiant 0.9.0+
+# DragOrder for Radiant 0.9.2+
 
 Created by Bright 4, February 2009. Inspired by and based on Sean Cribbs' Reorder extension.
 
@@ -6,7 +6,7 @@ Created by Bright 4, February 2009. Inspired by and based on Sean Cribbs' Reorde
 
 Only designers and admins have the ability to re-order pages
 
-Master should work with Radiant Edge. Use git tag radiant-0.9.1 with the Radiant 0.9.1 gem.
+Is now only compatible with Radiant above 0.9.1 (especially as a gem)
 
 ## Installation
 
@@ -19,7 +19,7 @@ Master should work with Radiant Edge. Use git tag radiant-0.9.1 with the Radiant
 
 ### v0.4.2 - 2010-11-27
 
-* Made compatible with edge
+* Made compatible with edge, otherwise we can't override views
 * Tidied up a lot of internal javascript
 * Overrode some helpers
 * Rewrote more of sitemap.js

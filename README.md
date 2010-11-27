@@ -17,6 +17,13 @@ Master should work with Radiant Edge. Use git tag radiant-0.9.1 with the Radiant
 
 ## Version History
 
+### v0.4.2 - 2010-11-27
+
+* Made compatible with edge
+* Tidied up a lot of internal javascript
+* Overrode some helpers
+* Rewrote more of sitemap.js
+
 ### v0.3.7 - 2010-11-22
 
 * Turned into a gem

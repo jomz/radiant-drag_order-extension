@@ -35,7 +35,7 @@ var DragOrderIndex = Class.create({
           method: 'put',
           parameters: {
             'parent_id': this.getPageID(drag.element.up('.page')),
-            'children' : this.buildChildrenString(drop.element)
+            'children' : this.buildChildrenString(drag.element.up('.children').immediateDescendants())
           }
         });
       }.bind(this)
@@ -92,15 +92,16 @@ var DragOrderIndex = Class.create({
     });
   },
   
-  buildChildrenString: function(page) {
+  buildChildrenString: function(pages) {
     var drag_order = this;
     
-    var children = drag_order.getPageID(page);
-    
-    page.siblings('.page').each(function(page) {
-      children += ',' + drag_order.getPageID(page); 
+    var children = '';    
+    pages.each(function(page) {
+      children += drag_order.getPageID(page) + ',';
     })
-    return children
+    children = children.slice(0,-1);
+    
+    return children;
   },
   
   getPageID: function(page) {

@@ -35,7 +35,7 @@ var DragOrderIndex = Class.create({
           method: 'put',
           parameters: {
             'parent_id': this.getPageID(drag.element.up('.page')),
-            'children' : this.buildChildrenString(drag.element)
+            'children' : this.buildChildrenString(drop.element)
           }
         });
       }.bind(this)

@@ -49,7 +49,7 @@ var DragOrderIndex = Class.create({
       
       // If there are children, it's not the home and it doesn't have children_visible
       if (children.length > 0) {
-        if (!page.hasClassName('level_0') && !page.hasClassName('children_visible')) {
+        if (!page.hasClassName('level_0') && page.hasClassName('no_children')) {
           // Toggle Expand Class (we want an expander)
           page.down('.expander').addClassName('visible');
           page.down('.expander').removeClassName('hidden');
@@ -57,7 +57,6 @@ var DragOrderIndex = Class.create({
           // Toggle Children Identifier Classes (there are children)  
           page.addClassName('children_visible');
           page.removeClassName('no_children');
-          page.removeClassName('children_hidden');
         }
       }
       // Else if there is not already a class of no children

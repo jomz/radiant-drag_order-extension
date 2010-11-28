@@ -11,21 +11,21 @@ class SortPagesDataset < Dataset::Base
       :title  => 'Two',
       :slug   => 'two',
       :breadcrumb => 'two',
-      :position => 2,
+      :position => 1,
       :parent => pages(:one)
       
     create_record :page, :three,
       :title  => 'Three',
       :slug   => 'three',
       :breadcrumb => 'three',
-      :position => 3,
+      :position => 2,
       :parent => pages(:one)
       
     create_record :page, :four,
       :title  => 'Four',
       :slug   => 'four',
       :breadcrumb => 'four',
-      :position => 4,
+      :position => 3,
       :parent => pages(:one)
   end
 end

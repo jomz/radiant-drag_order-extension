@@ -41,6 +41,15 @@ describe Admin::PagesController do
         response.should be_success
         response.body.should === 'Pages successfully sorted.'
       end
+      
+      it 'should reorder pages' do
+        put :sort, :parent_id => @params[:parent_id], :children => @params[:children], :format => 'js'
+
+        pages(:one).position.should === 1 # Don't change parent
+        pages(:four).position.should === 0 # Start at zero
+        pages(:three).position.should === 1
+        pages(:two).position.should === 2 # End at 2
+      end
     end
     
   end

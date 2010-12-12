@@ -35,12 +35,15 @@
           cursor: move
           left: 9px
           width: 24px
-          opacity: 0.25
+          opacity: 0
           
-          &:hover
-            opacity: 1
           img
             cursor: move
+            
+      &:hover
+        .attribute
+          &.handle
+            opacity: 1
 
 .inset
   .handle

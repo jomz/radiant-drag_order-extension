@@ -25,6 +25,7 @@
     &.drag_move
       .children
         opacity: 0.25
+        filter: alpha(opacity = 25)
     
     .attributes
     
@@ -35,7 +36,7 @@
           cursor: move
           left: 9px
           width: 24px
-          opacity: 0
+          visibility: hidden
           
           img
             cursor: move
@@ -43,7 +44,7 @@
       &:hover
         .attribute
           &.handle
-            opacity: 1
+            visibility: visible
 
 .inset
   .handle

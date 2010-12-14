@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{radiant-drag_order-extension}
-  s.version = "0.4.9"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dirk Kelly"]
-  s.date = %q{2010-12-13}
+  s.date = %q{2010-12-14}
   s.description = %q{Radiant DragOrder allows you to reorder pages funly}
   s.email = %q{dk@dirkkelly.com}
   s.extra_rdoc_files = [

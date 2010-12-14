@@ -13,6 +13,17 @@
   text-align: center
   +border-radius(100px)
 
+=object_name  
+  font-size: 115%
+  font-weight: bold
+  img
+    vertical-align: center
+  a
+    color: black
+    text-decoration: none
+    &:hover
+      color: #0066cc
+      text-decoration: underline
 #main
   // Support floated elements, avoid horizontal scrollbar
   overflow: hidden
@@ -22,7 +33,7 @@ ol.index
 
 .index
   font-size: 90%
-  margin-bottom: 2emasset
+  margin-bottom: 2em
   width: 100%
   th
     text-align: left
@@ -61,27 +72,19 @@ ol.index
       display: block
       float: left
       padding-right: 5px
-    &.empty
-      color: silver
-      font-size: 85%
-      font-style: italic
-      padding: 3em
-      text-align: center
-    &.name
-      font-size: 115%
-      font-weight: bold
-      img
-        vertical-align: center
-      a
-        color: black
-        text-decoration: none
-        &:hover
-          color: #0066cc
-          text-decoration: underline
+      &.empty
+        color: silver
+        font-size: 85%
+        font-style: italic
+        padding: 3em
+        text-align: center
+      &.name
+        +object_name
   li .attributes .actions
     float: right
-  td.actions    
-    width: 225px
+  td.name
+    width: 80%
+    +object_name
   li .attributes .actions, td.actions
     a.action, span.action.disabled
       padding: 6px

@@ -10,6 +10,9 @@ class DragOrderExtension < Radiant::Extension
     Admin::NodeHelper.send :include, DragOrder::Helpers::Admin::NodeHelper
     
     admin.pages.index.add :node,  "handle", :before => "title_column"
+    #switch status_column and actions_column's position
+    admin.pages.index.node.delete("status_column")
+    admin.pages.index.add :node, "status_column", :after => "actions_column"
   end
   
 end
